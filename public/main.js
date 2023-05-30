@@ -1,12 +1,18 @@
 const path = require('path')
-
-const { app, BrowserWindow } = require('electron')
 const isDev = require('electron-is-dev')
+const { app, BrowserWindow } = require('electron')
+
+require('./mainMessage')
+console.log('ran main updated')
 
 function createWindow() {
   const win = new BrowserWindow({
     width: 800,
     height: 600,
+    webPreferences: {
+      nodeIntegration: true,
+      preload: path.join(__dirname, 'preload.js'),
+    },
   })
 
   win.loadURL(
