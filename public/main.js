@@ -2,8 +2,9 @@ const path = require('path')
 const isDev = require('electron-is-dev')
 const { app, BrowserWindow } = require('electron')
 
-require('./mainMessage')
-console.log('ran main updated')
+const { database } = require('./database.js')
+const { databaseHandler } = require('./databaseMessage.js')
+databaseHandler.attach(database)
 
 function createWindow() {
   const win = new BrowserWindow({
