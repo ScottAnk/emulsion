@@ -9,13 +9,20 @@ class DatabaseHandler {
     this.database = database
   }
 
-  test() {
-    return 'test response from database handler'
+  createImage(event, image) {
+    this.database.run(`INSERT INTO Images (uid) VALUES(?)`, image.uid)
+  }
+
+  indexImages(event) {
+    this.database.all(`SELECT * FROM Images`, (err, rows) =>
+      event.reply('indexImages', rows)
+    )
   }
 }
 
 const databaseHandler = new DatabaseHandler()
 
-ipcMain.handle('test', () => databaseHandler.test())
+ipcMain.handle('createImage', databaseHandler.createImage.bind(databaseHandler))
+ipcMain.on('indexImages', databaseHandler.indexImages.bind(databaseHandler))
 
 module.exports = { databaseHandler }
