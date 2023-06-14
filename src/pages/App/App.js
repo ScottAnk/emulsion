@@ -7,11 +7,13 @@ function App() {
       <Collections></Collections>
       <div className="viewer">
         <img
-          src="file:///home/scott/Pictures/Screenshots/testImage.png"
+          src="file:///home/scott/Pictures/testImage.jpg"
           alt="file preview"
         ></img>
-        <button name="previous">previous</button>
-        <button name="next">next</button>
+        <div className="viewerControls">
+          <button name="previous">previous</button>
+          <button name="next">next</button>
+        </div>
       </div>
     </div>
   )
