@@ -8,10 +8,11 @@ databaseHandler.attach(database)
 
 function createWindow() {
   const win = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1200,
+    height: 750,
     webPreferences: {
       nodeIntegration: true,
+      webSecurity: !isDev,
       preload: path.join(__dirname, 'preload.js'),
     },
   })
