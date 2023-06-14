@@ -10,6 +10,8 @@ function App() {
           src="file:///home/scott/Pictures/Screenshots/testImage.png"
           alt="file preview"
         ></img>
+        <button name="previous">previous</button>
+        <button name="next">next</button>
       </div>
     </div>
   )
