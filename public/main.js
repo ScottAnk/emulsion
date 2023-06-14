@@ -1,6 +1,6 @@
 const path = require('path')
 const isDev = require('electron-is-dev')
-const { app, protocol, net, BrowserWindow } = require('electron')
+const { app, BrowserWindow } = require('electron')
 
 const { database } = require('./database.js')
 const { databaseHandler } = require('./databaseMessage.js')
@@ -27,12 +27,7 @@ function createWindow() {
   }
 }
 
-app
-  .whenReady()
-  .then(createWindow)
-  .then(() => {
-    console.log('sanity check: now app ready status is ', app.isReady())
-  })
+app.whenReady().then(createWindow)
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
