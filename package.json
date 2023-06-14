@@ -2,7 +2,7 @@
   "name": "emulsion",
   "version": "0.1.0",
   "description": "an open source tool for organizing and cataloging digital photos",
-  "main": "public/main.js",
+  "main": "electron/main.js",
   "keywords": [
     "photo",
     "catalogue",
