@@ -6,3 +6,11 @@ test('renders an image', () => {
   const imageElement = screen.getByRole('img')
   expect(imageElement).toBeInTheDocument()
 })
+
+test('renders preview navigator buttons', () => {
+  render(<App />)
+  const nextButton = screen.getByRole('button', { name: 'next' })
+  const prevButton = screen.getByRole('button', { name: 'previous' })
+  expect(nextButton).toBeInTheDocument()
+  expect(prevButton).toBeInTheDocument()
+})
