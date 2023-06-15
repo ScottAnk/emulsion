@@ -1,4 +1,5 @@
 const sqlite3 = require('sqlite3')
+const isDev = require('electron-is-dev')
 
 const database = new sqlite3.Database('./public/db.sqlite3', (err) => {
   if (err) console.error('Database opening error: ', err)
@@ -21,5 +22,9 @@ database
       description TEXT
     )`
   )
+
+if (isDev) {
+  database.on('trace', (sql) => console.log('SQLite executing:', sql))
+}
 
 module.exports = { database }

@@ -1,8 +1,8 @@
 const { contextBridge, ipcRenderer } = require('electron')
 
 contextBridge.exposeInMainWorld('message', {
-  createImage: (image) => ipcRenderer.invoke('createImage', image),
   indexImages: () => ipcRenderer.send('indexImages'),
+  importImages: () => ipcRenderer.send('importImages'),
 })
 
 ipcRenderer.on('indexImages', (event, response) =>

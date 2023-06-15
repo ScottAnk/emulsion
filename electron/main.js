@@ -2,6 +2,7 @@ const path = require('path')
 const isDev = require('electron-is-dev')
 const { app, BrowserWindow } = require('electron')
 
+require('./utilities/fileHandler')
 const { database } = require('./config/database.js')
 const { databaseHandler } = require('./utilities/databaseMessage.js')
 databaseHandler.attach(database)

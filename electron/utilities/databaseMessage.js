@@ -9,8 +9,10 @@ class DatabaseHandler {
     this.database = database
   }
 
-  createImage(event, image) {
-    this.database.run(`INSERT INTO Images (uid) VALUES(?)`, image.uid)
+  insertImages(imagePaths) {
+    for (let path of imagePaths) {
+      this.database.run(`INSERT INTO Images (uid) VALUES (?)`, path)
+    }
   }
 
   indexImages(event) {
@@ -22,7 +24,6 @@ class DatabaseHandler {
 
 const databaseHandler = new DatabaseHandler()
 
-ipcMain.handle('createImage', databaseHandler.createImage.bind(databaseHandler))
 ipcMain.on('indexImages', databaseHandler.indexImages.bind(databaseHandler))
 
 module.exports = { databaseHandler }
