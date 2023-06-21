@@ -7,9 +7,10 @@ contextBridge.exposeInMainWorld('message', {
   updateImage: (params) => ipcRenderer.send('updateImage', params),
 })
 
-ipcRenderer.on('indexImages', (event, response) =>
-  console.log('response from db: ', response)
-)
+ipcRenderer.on('indexImages', (event, response) => {
+  console.log('response from db:')
+  console.table(response)
+})
 
 ipcRenderer.on('error', (event, error) => {
   console.error(error)
