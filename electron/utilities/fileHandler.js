@@ -16,3 +16,5 @@ function importImages(event) {
 }
 
 ipcMain.on('importImages', importImages)
+
+module.exports = { importImages }
