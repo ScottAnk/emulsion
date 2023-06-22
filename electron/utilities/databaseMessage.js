@@ -41,7 +41,7 @@ class DatabaseHandler {
 
     let sql = `UPDATE Images`
     for (let key of validKeys) {
-      if (paramKeys.find((element) => element === key)) {
+      if (paramKeys.includes(key)) {
         sql += `\nSET ${key} = ?`
         sqlParams.push(params[key])
       }
