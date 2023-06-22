@@ -1,5 +1,12 @@
 const { contextBridge, ipcRenderer } = require('electron')
 
+contextBridge.exposeInMainWorld('listenToElectron', (channel, callback) => {
+  const approvedChannels = ['indexImages']
+  if (approvedChannels.includes(channel)) {
+    ipcRenderer.on(channel, (event, ...args) => callback(...args))
+  }
+})
+
 contextBridge.exposeInMainWorld('message', {
   indexImages: () => ipcRenderer.send('indexImages'),
   importImages: () => ipcRenderer.send('importImages'),

@@ -1,7 +1,16 @@
+import { useState, useEffect } from 'react'
+
 import Collections from '../../components/Collections/Collections.js'
 import './App.css'
 
 function App() {
+  const [library, setLibrary] = useState([])
+  window.listenToElectron('indexImages', setLibrary)
+
+  useEffect(() => {
+    window.message.indexImages()
+  }, [])
+
   return (
     <div className="App">
       <Collections></Collections>
