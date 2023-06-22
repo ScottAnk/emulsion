@@ -7,7 +7,11 @@ function App() {
       <Collections></Collections>
       <div className="viewer">
         <img
-          src="file:///home/scott/Pictures/testImage.jpg"
+          src={`file://${
+            library.length > 0
+              ? library[0].uid
+              : window.env.cwd + '/public/assets/empty.png'
+          }`}
           alt="file preview"
         ></img>
         <div className="viewerControls">
